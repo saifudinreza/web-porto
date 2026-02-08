@@ -67,3 +67,17 @@ window.addEventListener("scroll", () => {
     nav.classList.remove("shadow-xl");
   }
 });
+
+// Dark Mode Toggle
+const darkModeToggle = document.createElement("button");
+darkModeToggle.innerHTML = "🌙";
+darkModeToggle.className =
+  "fixed bottom-8 right-8 w-14 h-14 gradient-bg rounded-full text-2xl shadow-lg hover:shadow-2xl transition z-50";
+document.body.appendChild(darkModeToggle);
+
+darkModeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  darkModeToggle.innerHTML = document.body.classList.contains("dark-mode")
+    ? "☀️"
+    : "🌙";
+});
