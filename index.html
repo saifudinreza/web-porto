@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saifudin Reza - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <a
+      href="certificates.html"
+      class="nav-link text-gray-700 hover:text-purple-600"
+      >Certificates</a
+    >
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <div class="text-2xl font-bold gradient-text">SR.</div>
+          <div class="hidden md:flex space-x-8">
+            <a href="#home" class="nav-link text-gray-700 hover:text-purple-600"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="nav-link text-gray-700 hover:text-purple-600"
+              >About</a
+            >
+            <a
+              href="#services"
+              class="nav-link text-gray-700 hover:text-purple-600"
+              >Services</a
+            >
+            <a
+              href="#portfolio"
+              class="nav-link text-gray-700 hover:text-purple-600"
+              >Portfolio</a
+            >
+            <a
+              href="certificates.html"
+              class="nav-link text-gray-700 hover:text-purple-600"
+              >Certificates</a
+            >
+            <a href="#blog" class="nav-link text-gray-700 hover:text-purple-600"
+              >Blog</a
+            >
+          </div>
+          <button id="menuBtn" class="md:hidden text-gray-700">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2">
+          <a href="#home" class="block text-gray-700 hover:text-purple-600 py-2"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="block text-gray-700 hover:text-purple-600 py-2"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="block text-gray-700 hover:text-purple-600 py-2"
+            >Services</a
+          >
+          <a
+            href="#portfolio"
+            class="block text-gray-700 hover:text-purple-600 py-2"
+            >Portfolio</a
+          >
+          <a href="#blog" class="block text-gray-700 hover:text-purple-600 py-2"
+            >Blog</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-6 relative overflow-hidden">
+      <div class="hero-shape w-96 h-96 gradient-bg top-0 -right-48"></div>
+      <div class="hero-shape w-72 h-72 gradient-bg bottom-0 -left-36"></div>
+
+      <div class="container mx-auto relative z-10">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-12"
+        >
+          <div class="md:w-1/2 fade-in">
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-4">
+              Hi, I'm <span class="gradient-text">Saifudin Reza</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-2">
+              Student at Universitas Terbuka
+            </p>
+            <p class="text-lg text-gray-500 mb-8">Information Technology</p>
+            <p class="text-gray-600 mb-8 leading-relaxed">
+              Passionate about technology and programming. Continuously learning
+              and developing skills in web development and cloud computing.
+            </p>
+            <div class="flex gap-4">
+              <a
+                href="#portfolio"
+                class="gradient-bg text-white px-8 py-3 rounded-full hover:shadow-lg transition duration-300"
+              >
+                View My Work
+              </a>
+              <a
+                href="#contact"
+                class="border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-full hover:bg-purple-600 hover:text-white transition duration-300"
+              >
+                Contact Me
+              </a>
+            </div>
+            <div class="flex gap-4 mt-8">
+              <a
+                href="https://www.linkedin.com/in/saifudin-reza-295b7a363/"
+                target="_blank"
+                class="text-gray-600 hover:text-purple-600 transition"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://github.com/saifudinreza"
+                target="_blank"
+                class="text-gray-600 hover:text-purple-600 transition"
+              >
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/2 flex justify-center fade-in">
+            <div class="relative">
+              <div
+                class="w-80 h-80 rounded-full overflow-hidden border-8 border-white shadow-2xl"
+              >
+                <img
+                  id="profileImage"
+                  src=""
+                  alt="Saifudin Reza"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div
+                class="absolute -bottom-4 -right-4 gradient-bg text-white px-6 py-3 rounded-full shadow-lg"
+              >
+                <p class="font-semibold">Available for Work</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 bg-white">
+      <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-4">
+          About <span class="gradient-text">Me</span>
+        </h2>
+        <p class="text-center text-gray-600 mb-12">Get to know me better</p>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">My Journey</h3>
+            <p class="text-gray-600 mb-4 leading-relaxed">
+              I'm currently studying Information Technology at Universitas Dian
+              Nuswantoro, passionate about learning and exploring various
+              aspects of technology.
+            </p>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              I believe in continuous learning and have been actively improving
+              my skills through various online courses and certifications.
+            </p>
+
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-semibold">Python Programming</span>
+                  <span class="text-gray-600">85%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div
+                    class="gradient-bg h-2 rounded-full"
+                    style="width: 85%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-semibold">Web Development</span>
+                  <span class="text-gray-600">80%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div
+                    class="gradient-bg h-2 rounded-full"
+                    style="width: 80%"
+                  ></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="font-semibold">Cloud Computing</span>
+                  <span class="text-gray-600">75%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div
+                    class="gradient-bg h-2 rounded-full"
+                    style="width: 75%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div
+              class="bg-gradient-to-br from-purple-50 to-blue-50 p-6 rounded-xl card-hover"
+            >
+              <div class="text-4xl mb-2">🎓</div>
+              <h4 class="font-bold text-xl mb-2">Education</h4>
+              <p class="text-gray-600">IT Student at Universitas Terbuka</p>
+            </div>
+            <div
+              class="bg-gradient-to-br from-pink-50 to-purple-50 p-6 rounded-xl card-hover"
+            >
+              <div class="text-4xl mb-2">📜</div>
+              <h4 class="font-bold text-xl mb-2">Certifications</h4>
+              <p class="text-gray-600">Dicoding & AWS Certified</p>
+            </div>
+            <div
+              class="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-xl card-hover"
+            >
+              <div class="text-4xl mb-2">💻</div>
+              <h4 class="font-bold text-xl mb-2">Projects</h4>
+              <p class="text-gray-600">Multiple Web Apps</p>
+            </div>
+            <div
+              class="bg-gradient-to-br from-green-50 to-teal-50 p-6 rounded-xl card-hover"
+            >
+              <div class="text-4xl mb-2">🚀</div>
+              <h4 class="font-bold text-xl mb-2">Learning</h4>
+              <p class="text-gray-600">Always Growing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-6">
+      <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-4">
+          My <span class="gradient-text">Services</span>
+        </h2>
+        <p class="text-center text-gray-600 mb-12">What I can do for you</p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
+            <div
+              class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Web Development</h3>
+            <p class="text-gray-600">
+              Building responsive and modern websites using HTML, CSS,
+              JavaScript, and modern frameworks.
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
+            <div
+              class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Python Programming</h3>
+            <p class="text-gray-600">
+              Developing Python applications with focus on clean code, OOP, and
+              best practices.
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-xl shadow-lg card-hover">
+            <div
+              class="w-16 h-16 gradient-bg rounded-lg flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-3">Cloud Solutions</h3>
+            <p class="text-gray-600">
+              Learning and implementing cloud technologies with AWS and other
+              cloud platforms.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-6 bg-white">
+      <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-4">
+          My <span class="gradient-text">Portfolio</span>
+        </h2>
+        <p class="text-center text-gray-600 mb-12">Check out my recent work</p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-gray-50 rounded-xl overflow-hidden shadow-lg card-hover"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center"
+            >
+              <svg
+                class="w-20 h-20 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                ></path>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Python Learning Projects</h3>
+              <p class="text-gray-600 mb-4">
+                Various Python projects completed during Dicoding certification
+                course.
+              </p>
+              <span class="text-sm text-purple-600 font-semibold"
+                >Python • OOP • Testing</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded-xl overflow-hidden shadow-lg card-hover"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center"
+            >
+              <svg
+                class="w-20 h-20 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                ></path>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Web Applications</h3>
+              <p class="text-gray-600 mb-4">
+                Responsive web applications built with modern technologies.
+              </p>
+              <span class="text-sm text-purple-600 font-semibold"
+                >HTML • CSS • JavaScript</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="bg-gray-50 rounded-xl overflow-hidden shadow-lg card-hover"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center"
+            >
+              <svg
+                class="w-20 h-20 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                ></path>
+              </svg>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Cloud Computing Projects</h3>
+              <p class="text-gray-600 mb-4">
+                Learning projects on AWS cloud infrastructure.
+              </p>
+              <span class="text-sm text-purple-600 font-semibold"
+                >AWS • Cloud</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 px-6">
+      <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-4">
+          Latest <span class="gradient-text">Blog</span>
+        </h2>
+        <p class="text-center text-gray-600 mb-12">
+          My thoughts and experiences
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <article
+            class="bg-white rounded-xl overflow-hidden shadow-lg card-hover"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-purple-400 to-pink-500"
+            ></div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                <span>26 Mei 2025</span>
+                <span>•</span>
+                <span>Education</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">My Python Learning Journey</h3>
+              <p class="text-gray-600 mb-4">
+                Completing the Python Programming course from Dicoding - a
+                comprehensive 60-hour program covering fundamentals to advanced
+                topics.
+              </p>
+              <a href="#" class="text-purple-600 font-semibold hover:underline"
+                >Read More →</a
+              >
+            </div>
+          </article>
+
+          <article
+            class="bg-white rounded-xl overflow-hidden shadow-lg card-hover"
+          >
+            <div class="h-48 bg-gradient-to-br from-blue-400 to-cyan-500"></div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                <span>Recent</span>
+                <span>•</span>
+                <span>Technology</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Getting Started with Git</h3>
+              <p class="text-gray-600 mb-4">
+                Understanding version control and why Git is essential for
+                modern software development.
+              </p>
+              <a href="#" class="text-purple-600 font-semibold hover:underline"
+                >Read More →</a
+              >
+            </div>
+          </article>
+
+          <article
+            class="bg-white rounded-xl overflow-hidden shadow-lg card-hover"
+          >
+            <div
+              class="h-48 bg-gradient-to-br from-green-400 to-teal-500"
+            ></div>
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                <span>Recent</span>
+                <span>•</span>
+                <span>Development</span>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Building Modern Web Apps</h3>
+              <p class="text-gray-600 mb-4">
+                Exploring modern web development tools and frameworks for
+                creating responsive websites.
+              </p>
+              <a href="#" class="text-purple-600 font-semibold hover:underline"
+                >Read More →</a
+              >
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-white">
+      <div class="container mx-auto max-w-4xl">
+        <h2 class="text-4xl font-bold text-center mb-4">
+          Get In <span class="gradient-text">Touch</span>
+        </h2>
+        <p class="text-center text-gray-600 mb-12">
+          Let's work together on your next project
+        </p>
+
+        <div class="bg-gray-50 rounded-2xl p-8 md:p-12">
+          <form class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-gray-700 font-semibold mb-2"
+                  >Name</label
+                >
+                <input
+                  type="text"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:outline-none"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label class="block text-gray-700 font-semibold mb-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:outline-none"
+                  placeholder="your@email.com"
+                />
+              </div>
+            </div>
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Subject</label
+              >
+              <input
+                type="text"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:outline-none"
+                placeholder="Subject"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Message</label
+              >
+              <textarea
+                rows="5"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-500 focus:outline-none"
+                placeholder="Your message..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="w-full gradient-bg text-white py-4 rounded-lg font-semibold hover:shadow-lg transition duration-300"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12 px-6">
+      <div class="container mx-auto">
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Saifudin Reza</h3>
+            <p class="text-purple-100">
+              Information Technology Student passionate about web development
+              and cloud computing.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="#home" class="text-purple-100 hover:text-white"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="#about" class="text-purple-100 hover:text-white"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a href="#services" class="text-purple-100 hover:text-white"
+                  >Services</a
+                >
+              </li>
+              <li>
+                <a href="#portfolio" class="text-purple-100 hover:text-white"
+                  >Portfolio</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">Connect</h4>
+            <div class="flex gap-4">
+              <a
+                href="https://www.linkedin.com/in/saifudin-reza-295b7a363/"
+                target="_blank"
+                class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://github.com/saifudinreza"
+                target="_blank"
+                class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-white border-opacity-20 pt-8 text-center text-purple-100"
+        >
+          <p>&copy; 2025 Saifudin Reza. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
