@@ -1,0 +1,675 @@
+// ========== Anime.js - Animasi untuk semua button ==========
+function initButtonAnimations() {
+  if (typeof anime === "undefined") return;
+
+  // Animasi saat halaman load: hero & rekomendasi cards
+  const heroTitle = document.querySelector(".hero-title");
+  const heroImage = document.querySelector(".hero-image");
+  const btnHero = document.querySelector(".btn-hero");
+  if (heroTitle) {
+    anime({
+      targets: ".hero-title",
+      translateY: [30, 0],
+      opacity: [0, 1],
+      duration: 800,
+      easing: "easeOutExpo",
+    });
+  }
+  if (heroImage) {
+    anime({
+      targets: ".hero-image",
+      translateX: [40, 0],
+      opacity: [0, 1],
+      duration: 900,
+      delay: 200,
+      easing: "easeOutExpo",
+    });
+  }
+  if (btnHero) {
+    anime({
+      targets: ".btn-hero",
+      translateY: [20, 0],
+      opacity: [0, 1],
+      duration: 700,
+      delay: 400,
+      easing: "easeOutBack",
+    });
+  }
+
+  document.querySelectorAll(".rekomendasi-card").forEach((el, i) => {
+    anime({
+      targets: el,
+      translateY: [50, 0],
+      opacity: [0, 1],
+      duration: 600,
+      delay: 150 * i,
+      easing: "easeOutExpo",
+    });
+  });
+
+  // Semua tombol dengan class btn-animate: scale + shadow saat hover (via CSS sudah), klik dapat efek bounce
+  document.querySelectorAll(".btn-animate").forEach((btn) => {
+    btn.addEventListener("mouseenter", function () {
+      anime({
+        targets: this,
+        scale: 1.05,
+        duration: 200,
+        easing: "easeOutQuad",
+      });
+    });
+    btn.addEventListener("mouseleave", function () {
+      anime({
+        targets: this,
+        scale: 1,
+        duration: 200,
+        easing: "easeOutQuad",
+      });
+    });
+    btn.addEventListener("mousedown", function () {
+      anime({
+        targets: this,
+        scale: 0.97,
+        duration: 80,
+        easing: "easeOutQuad",
+      });
+    });
+    btn.addEventListener("mouseup", function () {
+      anime({
+        targets: this,
+        scale: 1.05,
+        duration: 120,
+        easing: "easeOutElastic(1, 0.5)",
+      });
+    });
+  });
+
+  // Tombol Pilih kendaraan (select-vehicle): efek saat klik
+  document.querySelectorAll(".select-vehicle").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      anime({
+        targets: this,
+        scale: [1, 1.15, 1],
+        duration: 400,
+        easing: "easeOutElastic(1, 0.6)",
+      });
+    });
+  });
+
+  // Navbar logo icon subtle loop
+  const navLogo = document.querySelector(".nav-logo-icon");
+  if (navLogo) {
+    navLogo.addEventListener("mouseenter", function () {
+      anime({
+        targets: this,
+        rotate: [0, 10, -10, 0],
+        duration: 500,
+        easing: "easeInOutQuad",
+      });
+    });
+  }
+}
+
+// Jalankan setelah DOM siap
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initButtonAnimations);
+} else {
+  initButtonAnimations();
+}
+
+// Mobile Menu Toggle
+document
+  .getElementById("mobile-menu-button")
+  .addEventListener("click", function () {
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.toggle("hidden");
+  });
+
+// Vehicle Type Toggle
+const btnMotor = document.getElementById("btn-motor");
+const btnMobil = document.getElementById("btn-mobil");
+const motorSection = document.getElementById("motor-section");
+const mobilSection = document.getElementById("mobil-section");
+
+btnMotor.addEventListener("click", function () {
+  btnMotor.classList.add("bg-blue-600", "text-white");
+  btnMotor.classList.remove("bg-gray-200", "text-gray-700");
+  btnMobil.classList.add("bg-gray-200", "text-gray-700");
+  btnMobil.classList.remove("bg-blue-600", "text-white");
+  motorSection.classList.remove("hidden");
+  mobilSection.classList.add("hidden");
+});
+
+btnMobil.addEventListener("click", function () {
+  btnMobil.classList.add("bg-blue-600", "text-white");
+  btnMobil.classList.remove("bg-gray-200", "text-gray-700");
+  btnMotor.classList.add("bg-gray-200", "text-gray-700");
+  btnMotor.classList.remove("bg-blue-600", "text-white");
+  mobilSection.classList.remove("hidden");
+  motorSection.classList.add("hidden");
+});
+
+// Booking Steps Navigation
+const stepContents = document.querySelectorAll(".step-content");
+const steps = document.querySelectorAll(".progress-step");
+const nextButtons = {
+  step1: document.getElementById("next-to-step2"),
+  step2: document.getElementById("next-to-step3"),
+  step3: document.getElementById("next-to-step4"),
+};
+const backButtons = {
+  step2: document.getElementById("back-to-step1"),
+  step3: document.getElementById("back-to-step2"),
+  step4: document.getElementById("back-to-step3"),
+};
+
+// Store booking data
+const bookingData = {
+  vehicle: null,
+  vehicleType: null,
+  startDate: null,
+  endDate: null,
+  pickupLocation: null,
+  returnLocation: null,
+  addons: [],
+  personalInfo: {},
+  paymentMethod: null,
+  totalPrice: 0,
+};
+
+// Vehicle Selection
+const selectButtons = document.querySelectorAll(".select-vehicle");
+selectButtons.forEach((button) => {
+  button.addEventListener("click", function () {
+    // Store selected vehicle data
+    bookingData.vehicle = this.getAttribute("data-vehicle");
+    bookingData.vehiclePrice = parseInt(this.getAttribute("data-price"));
+    bookingData.vehicleType = this.closest("#motor-section")
+      ? "motor"
+      : "mobil";
+
+    // Enable next button
+    nextButtons.step1.disabled = false;
+
+    // Update selected vehicle UI
+    selectButtons.forEach((btn) => {
+      btn.classList.remove("bg-blue-700");
+      btn.classList.add("bg-blue-600");
+    });
+    this.classList.remove("bg-blue-600");
+    this.classList.add("bg-blue-700");
+
+    // Update summary in step 2
+    updateVehicleSummary();
+  });
+});
+
+function updateVehicleSummary() {
+  document.getElementById("selected-vehicle-name").textContent =
+    bookingData.vehicle;
+  document.getElementById("selected-vehicle-price").textContent =
+    `Rp ${bookingData.vehiclePrice.toLocaleString("id-ID")}/hari`;
+
+  // Set vehicle image based on selection
+  let imageUrl = "";
+  if (bookingData.vehicle === "Honda Scoopy") {
+    imageUrl = "gambar motor/honda scoopy.jpg";
+  } else if (bookingData.vehicle === "Yamaha NMAX") {
+    imageUrl = "gambar motor/nmax.jpg";
+  } else if (bookingData.vehicle === "Vespa Sprint") {
+    imageUrl = "gambar motor/sprint.jpg";
+  } else if (bookingData.vehicle === "Toyota Avanza") {
+    imageUrl = "gambar mobil/avanza.jpg";
+  } else if (bookingData.vehicle === "Honda Jazz") {
+    imageUrl = "gambar mobil/jazz.jpg";
+  } else if (bookingData.vehicle === "Toyota Fortuner") {
+    imageUrl = "gambar mobil/fortuner.jpg";
+  }
+
+  document.getElementById("selected-vehicle-image").src = imageUrl;
+  document.getElementById("selected-vehicle-image").alt = bookingData.vehicle;
+
+  // Set vehicle details based on selection
+  let type = "",
+    capacity = "",
+    transmission = "";
+  if (
+    bookingData.vehicle === "Honda Scoopy" ||
+    bookingData.vehicle === "Yamaha NMAX" ||
+    bookingData.vehicle === "Vespa Sprint"
+  ) {
+    type = "Motor";
+    capacity = "2 Orang";
+    transmission = "Automatic";
+  } else {
+    type = "Mobil";
+    if (
+      bookingData.vehicle === "Toyota Avanza" ||
+      bookingData.vehicle === "Toyota Fortuner"
+    ) {
+      capacity = "7 Orang";
+    } else {
+      capacity = "5 Orang";
+    }
+    if (bookingData.vehicle === "Toyota Avanza") {
+      transmission = "Manual";
+    } else {
+      transmission = "Automatic";
+    }
+  }
+
+  document.getElementById("selected-vehicle-type").textContent = type;
+  document.getElementById("selected-vehicle-capacity").textContent = capacity;
+  document.getElementById("selected-vehicle-transmission").textContent =
+    transmission;
+}
+
+// Step Navigation
+function goToStep(stepNumber) {
+  // Hide all step contents
+  stepContents.forEach((content) => {
+    content.classList.add("hidden");
+  });
+
+  // Show current step content
+  document
+    .getElementById(`step${stepNumber}-content`)
+    .classList.remove("hidden");
+
+  // Update progress steps
+  steps.forEach((step, index) => {
+    step.classList.remove("active", "completed");
+    if (index + 1 < stepNumber) {
+      step.classList.add("completed");
+    } else if (index + 1 === stepNumber) {
+      step.classList.add("active");
+    }
+  });
+}
+
+// Next button handlers
+nextButtons.step1.addEventListener("click", function () {
+  // Validate step 1
+  if (!bookingData.vehicle) {
+    alert("Silakan pilih kendaraan terlebih dahulu");
+    return;
+  }
+
+  goToStep(2);
+});
+
+nextButtons.step2.addEventListener("click", function () {
+  // Validate step 2
+  const startDate = document.getElementById("start-date").value;
+  const endDate = document.getElementById("end-date").value;
+
+  if (!startDate || !endDate) {
+    alert("Silakan isi tanggal mulai dan selesai sewa");
+    return;
+  }
+
+  if (new Date(startDate) > new Date(endDate)) {
+    alert("Tanggal selesai harus setelah tanggal mulai");
+    return;
+  }
+
+  // Store rental details
+  bookingData.startDate = startDate;
+  bookingData.endDate = endDate;
+  bookingData.pickupLocation = document.getElementById("pickup-location").value;
+  bookingData.returnLocation = document.getElementById("return-location").value;
+
+  // Store addons
+  bookingData.addons = [];
+  if (document.getElementById("insurance").checked) {
+    bookingData.addons.push({ name: "Asuransi", price: 50000 });
+  }
+  if (
+    document.getElementById("helmet").checked &&
+    bookingData.vehicleType === "motor"
+  ) {
+    bookingData.addons.push({ name: "Helm", price: 20000 });
+  }
+  if (
+    document.getElementById("child-seat").checked &&
+    bookingData.vehicleType === "mobil"
+  ) {
+    bookingData.addons.push({ name: "Car Seat Anak", price: 75000 });
+  }
+
+  // Calculate total price
+  const start = new Date(bookingData.startDate);
+  const end = new Date(bookingData.endDate);
+  const diffTime = Math.abs(end - start);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+  let totalAddons = 0;
+  bookingData.addons.forEach((addon) => {
+    if (addon.name === "Asuransi") {
+      totalAddons += addon.price * diffDays;
+    } else {
+      totalAddons += addon.price;
+    }
+  });
+
+  bookingData.totalPrice = bookingData.vehiclePrice * diffDays + totalAddons;
+
+  // Update summary in step 3
+  updateOrderSummary(diffDays);
+
+  goToStep(3);
+});
+
+nextButtons.step3.addEventListener("click", function () {
+  // Validate step 3
+  const fullName = document.getElementById("full-name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const idNumber = document.getElementById("id-number").value;
+
+  if (!fullName || !email || !phone || !idNumber) {
+    alert("Silakan lengkapi data diri Anda");
+    return;
+  }
+
+  if (
+    !document.getElementById("id-photo").files[0] ||
+    !document.getElementById("selfie-photo").files[0]
+  ) {
+    alert("Silakan unggah foto KTP/SIM dan selfie dengan KTP/SIM");
+    return;
+  }
+
+  // Store personal info
+  bookingData.personalInfo = {
+    fullName,
+    email,
+    phone,
+    idNumber,
+  };
+
+  // Update payment total
+  document.getElementById("payment-total").textContent =
+    `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
+  document.getElementById("payment-total-cc").textContent =
+    `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
+  document.getElementById("payment-total-ew").textContent =
+    `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
+
+  goToStep(4);
+});
+
+// Back button handlers
+backButtons.step2.addEventListener("click", function () {
+  goToStep(1);
+});
+
+backButtons.step3.addEventListener("click", function () {
+  goToStep(2);
+});
+
+backButtons.step4.addEventListener("click", function () {
+  goToStep(3);
+});
+
+function updateOrderSummary(days) {
+  document.getElementById("summary-vehicle-name").textContent =
+    bookingData.vehicle;
+  document.getElementById("summary-vehicle-price").textContent = `Rp ${(
+    bookingData.vehiclePrice * days
+  ).toLocaleString("id-ID")}`;
+
+  const startDate = new Date(bookingData.startDate).toLocaleDateString(
+    "id-ID",
+    { weekday: "long", year: "numeric", month: "long", day: "numeric" },
+  );
+  const endDate = new Date(bookingData.endDate).toLocaleDateString("id-ID", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  document.getElementById("summary-rental-period").textContent =
+    `${startDate} - ${endDate}`;
+  document.getElementById("summary-rental-days").textContent = `${days} hari`;
+
+  const addonsContainer = document.getElementById("summary-addons");
+  addonsContainer.innerHTML = "";
+
+  bookingData.addons.forEach((addon) => {
+    const addonDiv = document.createElement("div");
+    addonDiv.className = "flex justify-between";
+
+    const addonName = document.createElement("span");
+    addonName.textContent = addon.name;
+
+    let addonPrice = addon.price;
+    if (addon.name === "Asuransi") {
+      addonPrice = addon.price * days;
+    }
+
+    const addonPriceSpan = document.createElement("span");
+    addonPriceSpan.textContent = `Rp ${addonPrice.toLocaleString("id-ID")}`;
+
+    addonDiv.appendChild(addonName);
+    addonDiv.appendChild(addonPriceSpan);
+    addonsContainer.appendChild(addonDiv);
+  });
+
+  document.getElementById("summary-total-price").textContent =
+    `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
+}
+
+// File Upload
+document.getElementById("upload-id-btn").addEventListener("click", function () {
+  document.getElementById("id-photo").click();
+});
+
+document
+  .getElementById("upload-selfie-btn")
+  .addEventListener("click", function () {
+    document.getElementById("selfie-photo").click();
+  });
+
+document.getElementById("id-photo").addEventListener("change", function (e) {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+      const preview = document.getElementById("id-photo-preview");
+      preview.querySelector("img").src = event.target.result;
+      preview.classList.remove("hidden");
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+document
+  .getElementById("selfie-photo")
+  .addEventListener("change", function (e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const preview = document.getElementById("selfie-photo-preview");
+        preview.querySelector("img").src = event.target.result;
+        preview.classList.remove("hidden");
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+// Payment Method Selection
+const paymentMethods = document.querySelectorAll(
+  'input[name="payment-method"]',
+);
+const paymentDetails = document.querySelectorAll(".payment-details");
+
+paymentMethods.forEach((method) => {
+  method.addEventListener("change", function () {
+    paymentDetails.forEach((detail) => {
+      detail.classList.add("hidden");
+    });
+
+    if (this.id === "bank-transfer") {
+      document
+        .getElementById("bank-transfer-details")
+        .classList.remove("hidden");
+      bookingData.paymentMethod = "Transfer Bank";
+    } else if (this.id === "credit-card") {
+      document.getElementById("credit-card-details").classList.remove("hidden");
+      bookingData.paymentMethod = "Kartu Kredit";
+    } else if (this.id === "e-wallet") {
+      document.getElementById("e-wallet-details").classList.remove("hidden");
+      bookingData.paymentMethod = "E-Wallet";
+    } else if (this.id === "virtual-account") {
+      const vaEl = document.getElementById("virtual-account-details");
+      if (vaEl) {
+        vaEl.classList.remove("hidden");
+        document.getElementById("payment-total-va").textContent =
+          "Rp " + bookingData.totalPrice.toLocaleString("id-ID");
+      }
+      bookingData.paymentMethod = "Virtual Account";
+    } else if (this.id === "minimarket") {
+      const mmEl = document.getElementById("minimarket-details");
+      if (mmEl) {
+        mmEl.classList.remove("hidden");
+        document.getElementById("payment-total-minimarket").textContent =
+          "Rp " + bookingData.totalPrice.toLocaleString("id-ID");
+      }
+      bookingData.paymentMethod = "Minimarket / Retail";
+    }
+  });
+});
+
+// E-Wallet Selection
+const eWalletOptions = document.querySelectorAll(".e-wallet-option");
+eWalletOptions.forEach((option) => {
+  option.addEventListener("click", function () {
+    eWalletOptions.forEach((opt) => {
+      opt.classList.remove("border-blue-500");
+    });
+    this.classList.add("border-blue-500");
+    bookingData.eWalletProvider = this.querySelector("p").textContent;
+  });
+});
+// Additional code can be added here if needed
+
+// Confirmation Payment Button
+document
+  .getElementById("confirm-payment")
+  .addEventListener("click", function () {
+    // Show confirmation modal
+    document.getElementById("confirmation-modal").classList.remove("hidden");
+
+    // Generate random order number
+    const orderNumber = "RENT-" + Math.floor(100000 + Math.random() * 900000);
+    document.getElementById("order-number").textContent = orderNumber;
+
+    // Update confirmation details
+    document.getElementById("confirmation-vehicle").textContent =
+      bookingData.vehicle;
+
+    const startDate = new Date(bookingData.startDate).toLocaleDateString(
+      "id-ID",
+      {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      },
+    );
+
+    const endDate = new Date(bookingData.endDate).toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+
+    document.getElementById("confirmation-period").textContent =
+      `${startDate} - ${endDate}`;
+    document.getElementById("confirmation-total").textContent =
+      `Rp ${bookingData.totalPrice.toLocaleString("id-ID")}`;
+
+    // Show receipt link in navigation
+    document.getElementById("receipt-link").classList.remove("hidden");
+    document.getElementById("mobile-receipt-link").classList.remove("hidden");
+  });
+
+// Close Modal
+document.getElementById("close-modal").addEventListener("click", function () {
+  document.getElementById("confirmation-modal").classList.add("hidden");
+
+  // Show booking receipt section
+  document.getElementById("booking-receipt").classList.remove("hidden");
+
+  // Scroll to receipt section
+  document
+    .getElementById("booking-receipt")
+    .scrollIntoView({ behavior: "smooth" });
+
+  // Populate receipt data
+  const receiptDate = new Date().toLocaleDateString("id-ID", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  document.getElementById("receipt-number").textContent =
+    document.getElementById("order-number").textContent;
+  document.getElementById("receipt-date").textContent = receiptDate;
+
+  document.getElementById("receipt-customer-name").textContent =
+    bookingData.personalInfo.fullName;
+  document.getElementById("receipt-customer-email").textContent =
+    bookingData.personalInfo.email;
+  document.getElementById("receipt-customer-phone").textContent =
+    bookingData.personalInfo.phone;
+  document.getElementById("receipt-customer-id").textContent =
+    bookingData.personalInfo.idNumber;
+
+  document.getElementById("receipt-vehicle").textContent = bookingData.vehicle;
+
+  const startDate = new Date(bookingData.startDate).toLocaleDateString(
+    "id-ID",
+    {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    },
+  );
+
+  const endDate = new Date(bookingData.endDate).toLocaleDateString("id-ID", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  const diffTime = Math.abs(
+    new Date(bookingData.endDate) - new Date(bookingData.startDate),
+  );
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+  document.getElementById("receipt-period").textContent =
+    `${startDate} - ${endDate} (${diffDays} hari)`;
+
+  document.getElementById("receipt-pickup").textContent =
+    bookingData.pickupLocation;
+  document.getElementById("receipt-return").textContent =
+    bookingData.returnLocation;
+});
+
+// Print Receipt
+document.getElementById("print-receipt").addEventListener("click", function () {
+  window.print();
+});
+
+// Mobile Menu Link Click Handler
+const mobileMenuLinks = document.querySelectorAll("#mobile-menu a");
+mobileMenuLinks.forEach((link) => {
+  link.addEventListener("click", function () {
+    document.getElementById("mobile-menu").classList.add("hidden");
+  });
+});
